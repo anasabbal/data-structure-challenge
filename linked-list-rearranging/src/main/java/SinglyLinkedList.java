@@ -29,46 +29,28 @@ public class SinglyLinkedList {
             tail = newNode;
         size++;
     }
-    private void rearrange(int i) {
+    public void rearrange(int n) {
+
         Node currentNode = head;
         head = currentNode;
         tail = currentNode;
 
-        while (currentNode != null){
-            Node newNode = currentNode.next;
+        while (currentNode != null) {
 
-            if(currentNode.data < i){
+            Node nextNode = currentNode.next;
+
+            if (currentNode.data < n) {
                 // insert node at the head
                 currentNode.next = head;
                 head = currentNode;
-            }else{
+            } else {
                 // insert node at the tail
                 tail.next = currentNode;
                 tail = currentNode;
             }
-            currentNode = newNode;
+            currentNode = nextNode;
         }
         tail.next = null;
-    }
-    public void removeDuplicate(){
-        Set<Integer> set = new HashSet<>();
-
-        Node currentNode = head;
-        Node prevNode = null;
-
-        while (currentNode != null){
-            if(set.contains(currentNode.data)){
-                prevNode.next = currentNode.next;
-                if(currentNode == tail){
-                    tail = prevNode;
-                }
-                size--;
-            }else{
-                set.add(currentNode.data);
-                prevNode = currentNode;
-            }
-            currentNode = currentNode.next;
-        }
     }
     public void print() {
 
@@ -84,33 +66,21 @@ public class SinglyLinkedList {
         System.out.println();
     }
 
+
+
     public static void main(String[] args) {
 
         SinglyLinkedList sll = new SinglyLinkedList();
 
-        sll.insertFirst(11);
-        sll.insertFirst(10);
-        sll.insertFirst(9);
-        sll.insertFirst(8);
-        sll.insertFirst(8);
-        sll.insertFirst(8);
         sll.insertFirst(7);
-        sll.insertFirst(6);
-        sll.insertFirst(5);
-        sll.insertFirst(4);
-        sll.insertFirst(-3);
         sll.insertFirst(2);
+        sll.insertFirst(3);
+        sll.insertFirst(4);
+        sll.insertFirst(5);
         sll.insertFirst(1);
-        sll.insertFirst(11);
-        sll.insertFirst(90);
 
         sll.print();
-
-        sll.removeDuplicate();
-
-        sll.print();
-
-        sll.rearrange(7);
+        sll.rearrange(3);
 
         sll.print();
     }
