@@ -20,6 +20,7 @@
         <module>lru-cache</module>
         <module>linked-list-palindrome</module>
         <module>linked-list-sum</module>
+        <module>linked-list-intersection</module>
     </modules>
 
     <properties>
